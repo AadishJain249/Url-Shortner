@@ -25,8 +25,8 @@ app.post('/shorturl', async(req, res) => {
     await user.create({ FullUrl: req.body.fullUrl })
     res.redirect('/')
 })
-app.get('/:shorturls', async(req, res) => {
-    const shortUrl = await user.findOne({ ShortUrl: req.param.shortUrl })
+app.get('/:shortUrl', async(req, res) => {
+    const shortUrl = await user.findOne({ ShortUrl: req.params.shortUrl })
     if (shortUrl === null) {
         return res.sendStatus(400)
     }
